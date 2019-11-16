@@ -1,0 +1,35 @@
+<div class="container" style="margin-bottom:20px;padding-top:20px;">  
+    <div class="row">  
+      <div class="col-sm-12 btn btn-success">  
+        Employees List 
+      </div>  
+    </div>  
+    <div class="col-sm-12" style="margin-bottom:20px;padding-top:20px;">  
+      <div class="row">  
+        <div class="col-sm-6">
+          <!--<input class="form-control" type="text" name="search" [(ngModel)]="filter" placeholder="Search">-->
+          <input class="form-control" type="text" name="search-box" #searchBox id="search-box" (keyup)="search(searchBox.value)" placeholder="Search" />
+        </div>  
+      </div>  
+    </div>  
+  </div>  
+  <div class="container" style="padding-top:20px;">  
+    <table class="table table-striped">  
+      <thead class="thead-dark">  
+        <th>Employee First Name</th>  
+        <th>Employee Last Name</th>  
+        <th>Employee Hire Date</th>  
+      </thead>  
+        <tbody>
+          <!-- <tr *ngFor="let emp of employees | filter:filter | paginate: { itemsPerPage: 5, currentPage: p }">  -->
+          <tr *ngFor="let emp of employees | paginate: { itemsPerPage: 5, currentPage: p }">
+            <td>{{emp.firstName}}</td>
+            <td>{{emp.lastName}}</td>
+            <td>{{emp.hireDate}}</td>
+          </tr>
+        </tbody>  
+    </table>  
+    <ul class="pagination">  
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>  
+    </ul>  
+  </div>  
